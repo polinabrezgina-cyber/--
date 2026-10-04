@@ -174,8 +174,8 @@ const WORKS = [
       };
     }
   },
-   {
-    title: "Shapes grid", year: 2026, note: "Sketch 7",
+  {
+    title: "Squares and dots", year: 2026, note: "Sketch 11",
     sketch: (p, s) => {
       const start = 20, distbetween = 50;
       p.setup = () => {
@@ -183,11 +183,10 @@ const WORKS = [
         p.scale(s / 1000);
         p.background(p.random(255), p.random(255), p.random(255));
         p.noStroke();
-        for (let i = 0; i < 100; i++) {
-          for (let j = 0; j < 100; j++) {
+        for (let i = 0; i < 20; i++) {
+          for (let j = 0; j < 20; j++) {
             p.rect(start + i * distbetween, start + j * distbetween, 40);
             p.circle(start + i * distbetween, start + j * distbetween, 30);
-            p.triangle(start + i * distbetween + 50, start + j * distbetween, 30, 40, 20, 30);
           }
         }
       };
