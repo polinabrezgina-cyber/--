@@ -103,7 +103,7 @@ const WORKS = [
     }
   },
   {
-    title: "Mouse trail", year: 2026, note: "Move the mouse over the canvas.",
+    title: "Rectangles", year: 2026, note: "Sketch 3",
     sketch: (p, s) => {
       p.setup = () => {
         p.createCanvas(s, s);
@@ -115,8 +115,6 @@ const WORKS = [
         p.fill(255, 196, 254, 15);
         p.rect(p.mouseX * 400 / s, p.mouseY * 400 / s, 100, 100);
       };
-    }
-  },
     }
   }
 ];
