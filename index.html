@@ -55,7 +55,7 @@
    ============================================================ */
 const WORKS = [
   {
-    title: "Sketch 1", year: 2026, note: "Apples",
+    title: "Apples", year: 2026, note: "Sketch 1",
     sketch: (p, s) => {
       const size = 50, start = 0, distbetween = 100;
       const colors = ['red', 'yellow', 'green'];
@@ -78,7 +78,7 @@ const WORKS = [
 
   },
   {
-    title: "DVD", year: 2026, note: "Bouncing logo.",
+    title: "DVD", year: 2026, note: "Sketch 2",
     sketch: (p, s) => {
       let x = 10, y = 10;
       let speedX = 2, speedY = -2;
@@ -103,21 +103,20 @@ const WORKS = [
     }
   },
   {
-    title: "Сетка", year: 2026, note: "Квадраты, вращающиеся волной.",
+    title: "Mouse trail", year: 2026, note: "Move the mouse over the canvas.",
     sketch: (p, s) => {
-      p.setup = () => { p.createCanvas(s, s); p.rectMode(p.CENTER); p.noFill(); };
-      p.draw = () => {
-        p.background(240, 236, 250);
-        const n = 8, c = s / n;
-        for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
-          p.push();
-          p.translate(c * (i + .5), c * (j + .5));
-          p.rotate(p.frameCount * 0.02 + (i + j) * 0.3);
-          p.stroke(255, 79, 94); p.strokeWeight(2);
-          p.square(0, 0, c * 0.7);
-          p.pop();
-        }
+      p.setup = () => {
+        p.createCanvas(s, s);
       };
+      p.draw = () => {
+        p.background(117, 66, 116, 10);
+        p.scale(s / 400);
+        p.noStroke();
+        p.fill(255, 196, 254, 15);
+        p.rect(p.mouseX * 400 / s, p.mouseY * 400 / s, 100, 100);
+      };
+    }
+  },
     }
   }
 ];
