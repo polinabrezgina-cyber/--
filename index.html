@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Скетчи p5.js</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<style>
+  :root{--bg:#e8e5f0;--ink:#1b1a2e;--card:#f6f4fb;--accent:#ff4f5e;--mute:#6b6880}
+  @media (prefers-color-scheme:dark){:root{--bg:#14132200;--bg:#141322;--ink:#ece9f7;--card:#1e1c33;--mute:#9a97b2}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+  header{padding:48px 20px 24px;max-width:1100px;margin:auto}
+  h1{font-size:clamp(40px,10vw,88px);line-height:.95;margin:0;font-weight:800;letter-spacing:-.03em}
+  header p{color:var(--mute);margin:12px 0 0;max-width:46ch}
+  main{max-width:1100px;margin:auto;padding:12px 20px 60px;display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .card{background:var(--card);border:0;padding:0;text-align:left;color:inherit;font:inherit;cursor:pointer;border-radius:14px;overflow:hidden}
+  .card:focus-visible,.close:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .view{aspect-ratio:1;background:#000}
+  .view canvas{display:block;width:100%!important;height:100%!important}
+  .meta{padding:12px 14px 14px}
+  .meta b{display:block;font-size:18px}
+  .meta span{color:var(--mute);font-size:14px}
+  dialog{border:0;padding:0;background:var(--card);color:var(--ink);border-radius:16px;width:min(92vw,760px);max-height:94vh}
+  dialog::backdrop{background:#000a}
+  .big{aspect-ratio:1;max-height:70vh;margin:auto;background:#000}
+  .info{padding:14px 18px 18px}
+  .info h2{margin:0;font-size:24px}
+  .info p{margin:4px 0 0;color:var(--mute)}
+  .close{position:absolute;top:10px;right:10px;z-index:2;border:0;border-radius:99px;background:var(--accent);color:#fff;font:inherit;font-weight:800;padding:6px 14px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <h1>Мои скетчи</h1>
+  <p>Живая коллекция работ на p5.js. Нажмите на работу, чтобы открыть её крупно.</p>
+</header>
+<main id="grid"></main>
+
+<dialog id="dlg">
+  <button class="close" id="close">Закрыть</button>
+  <div class="big" id="big"></div>
+  <div class="info"><h2 id="dt"></h2><p id="dd"></p></div>
+</dialog>
+
+<script>
+/* ============================================================
+   КАК ДОБАВИТЬ РАБОТУ
+   Скопируйте любой объект в массиве WORKS ниже и замените:
+   title, year, note и функцию sketch.
+   Скетч пишется в instance-режиме: используйте p.setup, p.draw,
+   p.circle(...) вместо глобальных setup, draw, circle(...).
+   Размер холста берите из переменной s (сторона квадрата).
+   ============================================================ */
+const WORKS = [
+  {
+    title: "Орбиты", year: 2026, note: "Точки на кругах разных радиусов.",
+    sketch: (p, s) => {
+      p.setup = () => { p.createCanvas(s, s); p.noStroke(); };
+      p.draw = () => {
+        p.background(15, 14, 30);
+        p.translate(s / 2, s / 2);
+        for (let i = 1; i < 14; i++) {
+          const r = i * s / 30, a = p.frameCount * 0.01 * (15 - i) * 0.3;
+          p.fill(255, 79 + i * 8, 94, 220);
+          p.circle(Math.cos(a) * r, Math.sin(a) * r, s / 40 + i);
+        }
+      };
+    }
+  },
+  {
+    title: "Поток шума", year: 2026, note: "Частицы в поле Перлина.",
+    sketch: (p, s) => {
+      const pts = [];
+      p.setup = () => {
+        p.createCanvas(s, s); p.background(20, 19, 40);
+        for (let i = 0; i < 400; i++) pts.push(p.createVector(p.random(s), p.random(s)));
+      };
+      p.draw = () => {
+        p.noStroke(); p.fill(20, 19, 40, 12); p.rect(0, 0, s, s);
+        p.stroke(120, 220, 200, 160);
+        for (const v of pts) {
+          const a = p.noise(v.x / 120, v.y / 120, p.frameCount / 400) * 6.283 * 2;
+          v.add(Math.cos(a), Math.sin(a));
+          p.point(v.x, v.y);
+          if (v.x < 0 || v.x > s || v.y < 0 || v.y > s) v.set(p.random(s), p.random(s));
+        }
+      };
+    }
+  },
+  {
+    title: "Сетка", year: 2026, note: "Квадраты, вращающиеся волной.",
+    sketch: (p, s) => {
+      p.setup = () => { p.createCanvas(s, s); p.rectMode(p.CENTER); p.noFill(); };
+      p.draw = () => {
+        p.background(240, 236, 250);
+        const n = 8, c = s / n;
+        for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+          p.push();
+          p.translate(c * (i + .5), c * (j + .5));
+          p.rotate(p.frameCount * 0.02 + (i + j) * 0.3);
+          p.stroke(255, 79, 94); p.strokeWeight(2);
+          p.square(0, 0, c * 0.7);
+          p.pop();
+        }
+      };
+    }
+  }
+];
+
+const grid = document.getElementById("grid");
+const dlg = document.getElementById("dlg");
+const big = document.getElementById("big");
+let bigInst = null;
+
+// Карточки: скетч работает, только пока карточка на экране
+WORKS.forEach(w => {
+  const card = document.createElement("button");
+  card.className = "card";
+  card.innerHTML = `<div class="view"></div><div class="meta"><b>${w.title}</b><span>${w.year}</span></div>`;
+  grid.appendChild(card);
+  const view = card.querySelector(".view");
+  const inst = new p5(p => w.sketch(p, 300), view);
+  inst.noLoop();
+  new IntersectionObserver(([e]) => e.isIntersecting ? inst.loop() : inst.noLoop()).observe(card);
+  card.addEventListener("click", () => openWork(w));
+});
+
+function openWork(w) {
+  document.getElementById("dt").textContent = w.title + ", " + w.year;
+  document.getElementById("dd").textContent = w.note || "";
+  const side = Math.min(700, Math.floor(Math.min(innerWidth * 0.92, innerHeight * 0.7)));
+  big.style.width = side + "px";
+  dlg.showModal();
+  bigInst = new p5(p => w.sketch(p, side), big);
+}
+function closeWork() { dlg.close(); }
+dlg.addEventListener("close", () => { if (bigInst) { bigInst.remove(); bigInst = null; } });
+document.getElementById("close").onclick = closeWork;
+dlg.addEventListener("click", e => { if (e.target === dlg) closeWork(); });
+</script>
+</body>
+</html>
