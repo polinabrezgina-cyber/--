@@ -141,6 +141,120 @@ const WORKS = [
       };
     }
   },
+  {
+    title: "Squares and circles", year: 2026, note: "Sketch 5",
+    sketch: (p, s) => {
+      const start = 20, distbetween = 20;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 1000);
+        p.background(220, 20, 28);
+        p.noFill();
+        for (let i = 0; i < 53; i++) {
+          for (let j = 0; j < 53; j++) {
+            p.rect(start + i * distbetween, start + j * distbetween, 40);
+            p.circle(start + i * distbetween - 40, start + j * distbetween - 40, 30);
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Circle trail", year: 2026, note: "Move the mouse over the canvas.",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(10, 10, 116, 5);
+        p.scale(s / 400);
+        p.noFill();
+        p.stroke(255, 25, 0);
+        p.circle(p.mouseX * 400 / s, p.mouseY * 400 / s, 100);
+      };
+    }
+  },
+   {
+    title: "Shapes grid", year: 2026, note: "Sketch 7",
+    sketch: (p, s) => {
+      const start = 20, distbetween = 50;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 1000);
+        p.background(p.random(255), p.random(255), p.random(255));
+        p.noStroke();
+        for (let i = 0; i < 100; i++) {
+          for (let j = 0; j < 100; j++) {
+            p.rect(start + i * distbetween, start + j * distbetween, 40);
+            p.circle(start + i * distbetween, start + j * distbetween, 30);
+            p.triangle(start + i * distbetween + 50, start + j * distbetween, 30, 40, 20, 30);
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Red composition", year: 2026, note: "Sketch 8",
+    sketch: (p, s) => {
+      const start = 0, distbetween = 30;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 400);
+        p.background(220, 10, 15);
+        p.rect(20, 20, 100, 100);
+        p.rect(300, 300, 30, 100);
+        p.rect(250, 180, 240, 10);
+        p.rect(-10, 300, 100, 40);
+        p.triangle(150, 150, 300, 400, 90, 200);
+        p.triangle(360, 50, 100, 10, 300, 100);
+        for (let i = 0; i < 14; i++) {
+          for (let j = 0; j < 14; j++) {
+            p.circle(start + i * distbetween, start + j * distbetween, 10);
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Triangles", year: 2026, note: "Sketch 9",
+    sketch: (p, s) => {
+      const size = 300;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 400);
+        p.background(p.random(255), p.random(255), p.random(255));
+        p.noStroke();
+        for (let i = 0; i < 100; i++) {
+          p.fill(p.random(255), p.random(255), p.random(255));
+          p.triangle(p.random(400), p.random(400), size, size, p.random(400), p.random(400));
+        }
+      };
+    }
+  },
+   {
+    title: "Color grid", year: 2026, note: "Sketch 10",
+    sketch: (p, s) => {
+      const size = 10, start = 0, distBetween = 10;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 250);
+        p.background(p.random(250), p.random(250), p.random(250));
+        p.noStroke();
+        for (let i = 0; i < 25; i++) {
+          for (let j = 0; j < 25; j++) {
+            p.fill(start + i * distBetween, 0, start + j * distBetween);
+            p.rect(start + i * distBetween, start + j * distBetween, size, size);
+            p.fill(start + i * distBetween, p.random(40, 100), start + j * distBetween);
+            p.circle(start + i * distBetween, start + j * distBetween, size);
+          }
+        }
+      };
+    }
+  },
+I kept the loops at 100 on purpose: the triangles have fixed corners near the top-left, so the ones that start outside the canvas still stretch into the picture. I removed the unused size and the extra numbers in triangle(), which p5 ignores.
+
+Claude works directly with your codebase
+
 ];
 
 const grid = document.getElementById("grid");
