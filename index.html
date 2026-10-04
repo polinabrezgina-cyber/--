@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ch<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -55,18 +55,28 @@
    ============================================================ */
 const WORKS = [
   {
-    title: "Орбиты", year: 2026, note: "Точки на кругах разных радиусов.",
+    title: "Sketch 1", year: 2026, note: "Apples",
     sketch: (p, s) => {
-      p.setup = () => { p.createCanvas(s, s); p.noStroke(); };
-      p.draw = () => {
-        p.background(15, 14, 30);
-        p.translate(s / 2, s / 2);
-        for (let i = 1; i < 14; i++) {
-          const r = i * s / 30, a = p.frameCount * 0.01 * (15 - i) * 0.3;
-          p.fill(255, 79 + i * 8, 94, 220);
-          p.circle(Math.cos(a) * r, Math.sin(a) * r, s / 40 + i);
+      const size = 50, start = 0, distbetween = 100;
+      const colors = ['red', 'yellow', 'green'];
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 1000);
+        p.background(p.random(255), p.random(255), p.random(255));
+        p.noStroke();
+        for (let i = 0; i < 30; i++) {
+          for (let j = 0; j < 30; j++) {
+            p.fill(p.random(colors));
+            p.ellipse(start + i * distbetween + size / 2, start + j * distbetween, size, size);
+            p.circle(start + i * distbetween, start + j * distbetween, size);
+            p.fill(0, 0, 0);
+            p.rect(start + i * distbetween + 10, start + j * distbetween - 50, 4, 30);
+          }
         }
       };
+    }
+  }
+];
     }
   },
   {
