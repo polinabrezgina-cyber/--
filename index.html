@@ -277,6 +277,151 @@ const WORKS = [
       };
     }
   },
+  {
+    title: "Bouncing boxes", year: 2026, note: "Sketch 12",
+    sketch: (p, s) => {
+      let x = 300, y = 20;
+      let speedX = 3, speedY = 3;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 20);
+        p.scale(s / 400);
+        p.fill(p.random(255), p.random(255), 250, 70);
+        p.noStroke();
+        p.rect(x, y, 50, 100);
+        p.rect(y, x, 50, 100);
+        p.rect(y, y, 50, 100);
+        p.rect(x, x, 50, 100);
+        x = x + speedX;
+        y = y + speedY;
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+      };
+    }
+  },
+   {
+    title: "Bouncing triangles", year: 2026, note: "Sketch 13",
+    sketch: (p, s) => {
+      let x = 300, y = 20;
+      let speedX = 3, speedY = 3;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 10);
+        p.scale(s / 400);
+        p.fill(255, 255, 255);
+        p.noStroke();
+        p.triangle(x, y, 50, 100, 50, 50);
+        p.triangle(y, x, 50, 100, 50, 50);
+        p.triangle(y, y, 50, 100, 50, 50);
+        p.triangle(x, x, 50, 100, 50, 50);
+        x = x + speedX;
+        y = y + speedY;
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+      };
+    }
+  },
+  {
+    title: "Triangles and squares", year: 2026, note: "Sketch 14",
+    sketch: (p, s) => {
+      const size = 60;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 400);
+        p.background(255, 255, 255);
+        p.noStroke();
+        for (let i = 0; i < 100; i++) {
+          p.fill(p.random(255), p.random(255), p.random(255));
+          p.triangle(p.random(400), p.random(400), size, size, 10, 10);
+          p.rect(p.random(400), p.random(400), size, size);
+        }
+      };
+    }
+  },
+  {
+    title: "Hey", year: 2026, note: "Sketch 15",
+    sketch: (p, s) => {
+      let x = 0, y = 10;
+      let speedX = 4, speedY = 2;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.textFont('Arial');
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(x, 174, 217);
+        p.textSize(38);
+        p.text("hey", 10, x - 10, y);
+        p.text("hey", 100, x - 50, y);
+        p.text("hey", 190, x - 90, y);
+        p.text("hey", 280, x - 130, y);
+        p.text("hey", 370, x - 170, y);
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
+        y = y + speedY;
+      };
+    }
+  },
+   {
+    title: "Flying fly", year: 2026, note: "Sketch 16",
+    sketch: (p, s) => {
+      let x = 10, y = 50;
+      let speedX = 20, speedY = 20;
+      let img;
+      p.preload = () => {
+        img = p.loadImage('fly-close-up.jpg');
+      };
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 800);
+        p.background(255, 255, 255);
+        p.textSize(38);
+        p.text(":3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3", 12, 100);
+        p.text(":3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3 :3", 12, 700);
+        p.image(img, x, y, img.width / 10, img.height / 10);
+        if (x + img.width / 10 > 800 || x < 0) speedX = speedX * -1;
+        if (y + img.height / 10 > 800 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
+        y = y + speedY;
+      };
+    }
+  },
+  {
+    title: "Day and night", year: 2026, note: "Sketch 17",
+    sketch: (p, s) => {
+      let sunHeight;
+      const horizon = 200;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        if (sunHeight < horizon) {
+          p.background(110, 180, 255, 50);
+        } else {
+          p.background(11, 4, 79, 50);
+          p.circle(p.random(255), p.random(255), p.random(255));
+        }
+        sunHeight = p.mouseY * 400 / s;
+        p.fill('yellow');
+        p.noStroke();
+        p.circle(200, sunHeight, 100);
+        if (sunHeight < horizon) {
+          p.fill(157, 255, 0);
+        } else {
+          p.fill(44, 71, 0);
+        }
+        p.rect(0, horizon, 400, horizon);
+      };
+    }
+  },
 ];
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
