@@ -250,6 +250,33 @@ const WORKS = [
       };
     }
   }
+  {
+    title: "Bouncing dots", year: 2026, note: "Sketch 11",
+    sketch: (p, s) => {
+      let x = 300, y = 20;
+      let speedX = 3, speedY = 3;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(23, 2, 184, 20);
+        p.scale(s / 400);
+        p.fill(230, 255, 100);
+        p.noStroke();
+        p.ellipse(x, y, 20, 20);
+        p.ellipse(y + 40, x - 10, 20, 20);
+        p.ellipse(y + 240, x - 20, 20, 20);
+        p.ellipse(y, y, 20, 20);
+        p.ellipse(x, x, 20, 20);
+        p.ellipse(x + 40, x - 30, 20, 20);
+        p.ellipse(x + 80, x - 60, 20, 20);
+        x = x + speedX;
+        y = y + speedY;
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+      };
+    }
+  },
 ];
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
