@@ -422,6 +422,67 @@ const WORKS = [
       };
     }
   },
+  {
+    title: "Bouncing balls", year: 2026, note: "Sketch 18",
+    sketch: (p, s) => {
+      let x = 300, y = 20;
+      let speedX = 5, speedY = 5;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 50);
+        p.scale(s / 400);
+        p.fill(p.random(255));
+        p.noStroke();
+        p.square(x, y, 50, 100, 50);
+        p.square(y, x, 50, 100, 50);
+        p.square(y, y, 50, 100, 50);
+        p.square(x, x, 50, 100, 50);
+        p.square(x - 200, y - 200, 50, 100, 50);
+        p.square(y - 100, x - 100, 50, 100, 50);
+        p.square(y - 300, y - 300, 50, 100, 50);
+        p.square(x - 100, x - 100, 50, 100, 50);
+        x = x + speedX;
+        y = y + speedY;
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+      };
+    }
+  },
+   {
+    title: "Squares and circles", year: 2026, note: "Sketch 19",
+    sketch: (p, s) => {
+      const size = 60;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 400);
+        p.background(255, 10, 255);
+        p.noStroke();
+        for (let i = 0; i < 100; i++) {
+          p.fill(p.random(255), p.random(255), p.random(255));
+          p.square(p.random(400), p.random(400), size, size, 10, 10);
+          p.circle(p.random(400), p.random(400), size);
+        }
+      };
+    }
+  },
+  {
+    title: "Mouse triangle", year: 2026, note: "Двигайте мышью по холсту.",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(200, 66, 115, 50);
+        p.scale(s / 400);
+        p.noStroke();
+        p.fill(p.random(255), p.random(255), p.random(255));
+        p.triangle(p.mouseX * 400 / s, p.mouseY * 400 / s, 100, 100, 100, 300);
+      };
+    }
+  },
+  
 ];
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
