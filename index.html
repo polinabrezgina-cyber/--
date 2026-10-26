@@ -482,7 +482,251 @@ const WORKS = [
       };
     }
   },
-  
+   {
+    title: "Strange watch", year: 2026, note: "Sketch 21",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(220, 200, 200, 20);
+        p.translate(200, 200);
+        p.rotate(p.frameCount * 0.05);
+        p.circle(0, 0, 200);
+        p.text('Strange watch', 1, 20, 10);
+        p.text('12', 1, 150, 200);
+        p.text('11', 1, 140, 200);
+        p.text('10', 1, 130, 200);
+        p.text('9', 1, 120, 200);
+        p.text('8', 1, 110, 200);
+        p.text('7', 1, 100, 200);
+        p.text('6', 1, 90, 200);
+        p.text('5', 1, 80, 200);
+        p.text('4', 1, 70, 200);
+        p.text('3', 1, 60, 200);
+        p.text('2', 1, 50, 200);
+        p.text('1', 1, 40, 200);
+        p.text('Strange watch', 200, 200, 200, 200);
+        p.line(0, 0, 0, 30);
+        p.rotate(p.frameCount * 0.1);
+        p.line(0, 0, 0, 70);
+      };
+    }
+  },
+   {
+    title: "Spinning zeros", year: 2026, note: "Sketch 22",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 50);
+        p.scale(s / 400);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(p.random(255), p.random(255), p.random(255));
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.05);
+            p.rotate(p.random(1));
+            p.text('0', 25, 24);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Spinning squares", year: 2026, note: "Sketch 23",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(255, 252, 99, 20);
+        p.scale(s / 400);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(p.random(255), p.random(255), p.random(12));
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.05);
+            p.rotate(p.random(1));
+            p.rect(0, 0, 25, 24);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Eye snake", year: 2026, note: "Sketch 24",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(2, 12, 74, 20);
+        p.fill(255, 255, 255);
+        p.text('Eye snake', 20, 20, 20);
+        p.textSize(40);
+        p.push();
+        p.translate(200, 200);
+        p.rotate(p.frameCount * 0.07);
+        p.fill(255, 232, 204);
+        p.ellipse(100, 0, 60, 100);
+        p.fill(255, 255, 255);
+        p.ellipse(100, 0, 30, 50);
+        p.fill(p.random(255), p.random(255), p.random(255));
+        p.ellipse(100, 0, 25);
+        p.fill(0, 0, 0);
+        p.circle(100, 0, 20);
+        p.pop();
+      };
+    }
+  },
+  {
+    title: "Spinning dots", year: 2026, note: "Sketch 25",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(51, 6, 71, 10);
+        p.scale(s / 400);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(p.random(255), p.random(255), p.random(255));
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.05);
+            p.rotate(p.random(10));
+            p.circle(50, 4, 10);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Money faces", year: 2026, note: "Sketch 26",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(51, 6, 71, 10);
+        p.scale(s / 400);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(p.random(255), p.random(255), p.random(255));
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.91);
+            p.rotate(p.random(100));
+            p.textSize(50);
+            p.text('🤑', 100, 100, 100);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+   {
+    title: "Colored outlines", year: 2026, note: "Sketch 27",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.scale(s / 500);
+        p.background(255, 250, 179);
+
+        p.stroke(235, 33, 19);
+        p.strokeWeight(10);
+        p.noFill();
+        p.circle(200, 300, 300);
+        p.circle(100, 80, 40);
+        p.circle(400, 40, 300);
+        p.circle(450, 450, 90);
+
+        p.stroke(3, 24, 255);
+        p.rect(200, 120, 50, 100);
+        p.rect(300, 200, 100, 230);
+        p.rect(30, 350, 250, 400);
+
+        p.stroke(80, 224, 36);
+        p.triangle(300, 200, 100, 20, 400, 150);
+        p.triangle(100, 400, 500, 222, 222, 100);
+        p.triangle(10, 40, 45, 100, 100, 10);
+      };
+    }
+  },
+   {
+    title: "67", year: 2026, note: "Sketch 28",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 20);
+        p.scale(s / 400);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(p.random(255), p.random(255), p.random(255));
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.05);
+            p.rotate(p.random(10));
+            p.text('67', 10, 10);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+  {
+    title: "Rotating squares", year: 2026, note: "Sketch 29",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(220, 60, 10, 10);
+        p.translate(10, 200);
+        p.rotate(p.frameCount * 0.05);
+        p.rect(0, 0, 200);
+        p.translate(100, 100);
+        p.rect(0, 0, 200);
+      };
+    }
+  },
+  {
+    title: "Bouncing 67", year: 2026, note: "Sketch 30",
+    sketch: (p, s) => {
+      let x = 300, y = 20;
+      let speedX = 4, speedY = 4;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(0, 0, 0, 20);
+        p.scale(s / 400);
+        p.fill(p.random(25), p.random(255), 250, 70);
+        p.noStroke();
+        p.textSize(50);
+        p.text('67', x, y, 100, 100);
+        p.text('67', y, x, 150, 100);
+        p.text('67', y, y, 200, 100);
+        p.text('67', x, x, 250, 100);
+        x = x + speedX;
+        y = y + speedY;
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+      };
+    }
+  },
 ];
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
