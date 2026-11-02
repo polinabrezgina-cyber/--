@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Polina's 50 sketches p5.js</title>
+<title>Polina's 40 sketches p5.js</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
 <style>
   :root{--bg:#e8e5f0;--ink:#1b1a2e;--card:#f6f4fb;--accent:#ff4f5e;--mute:#6b6880}
-  @media (prefers-color-scheme:dark){:root{--bg:#14132200;--bg:#141322;--ink:#ece9f7;--card:#1e1c33;--mute:#9a97b2}}
+  @media (prefers-color-scheme:dark){:root{--bg:#141322;--ink:#ece9f7;--card:#1e1c33;--mute:#9a97b2}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
   header{padding:48px 20px 24px;max-width:1100px;margin:auto}
@@ -72,10 +72,9 @@ const WORKS = [
             p.fill(0, 0, 0);
             p.rect(start + i * distbetween + 10, start + j * distbetween - 50, 4, 30);
           }
-      }
-    };
-  }
-
+        }
+      };
+    }
   },
   {
     title: "DVD", year: 2026, note: "Sketch 2",
@@ -116,8 +115,7 @@ const WORKS = [
         p.rect(p.mouseX * 400 / s, p.mouseY * 400 / s, 100, 100);
       };
     }
-  }, 
-  
+  },
   {
     title: "Boxes", year: 2026, note: "Sketch 4",
     sketch: (p, s) => {
@@ -159,7 +157,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Circle trail", year: 2026, note: "Move the mouse over the canvas.",
     sketch: (p, s) => {
       p.setup = () => {
@@ -175,7 +173,7 @@ const WORKS = [
     }
   },
   {
-    title: "Squares and dots", year: 2026, note: "Sketch 11",
+    title: "Squares and dots", year: 2026, note: "Sketch 7",
     sketch: (p, s) => {
       const start = 20, distbetween = 50;
       p.setup = () => {
@@ -192,7 +190,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Red composition", year: 2026, note: "Sketch 8",
     sketch: (p, s) => {
       const start = 0, distbetween = 30;
@@ -214,7 +212,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Triangles", year: 2026, note: "Sketch 9",
     sketch: (p, s) => {
       const size = 300;
@@ -230,7 +228,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Color grid", year: 2026, note: "Sketch 10",
     sketch: (p, s) => {
       const size = 10, start = 0, distBetween = 10;
@@ -301,7 +299,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Bouncing triangles", year: 2026, note: "Sketch 13",
     sketch: (p, s) => {
       let x = 300, y = 20;
@@ -367,7 +365,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Flying fly", year: 2026, note: "Sketch 16",
     sketch: (p, s) => {
       let x = 10, y = 50;
@@ -396,7 +394,7 @@ const WORKS = [
   {
     title: "Day and night", year: 2026, note: "Sketch 17",
     sketch: (p, s) => {
-      let sunHeight;
+      let sunHeight = 0;
       const horizon = 200;
       p.setup = () => {
         p.createCanvas(s, s);
@@ -450,8 +448,8 @@ const WORKS = [
       };
     }
   },
-   {
-    title: "Squares and circles", year: 2026, note: "Sketch 19",
+  {
+    title: "Random squares and circles", year: 2026, note: "Sketch 19",
     sketch: (p, s) => {
       const size = 60;
       p.setup = () => {
@@ -482,7 +480,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Strange watch", year: 2026, note: "Sketch 21",
     sketch: (p, s) => {
       p.setup = () => {
@@ -514,7 +512,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Spinning zeros", year: 2026, note: "Sketch 22",
     sketch: (p, s) => {
       p.setup = () => {
@@ -537,7 +535,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Spinning squares", year: 2026, note: "Sketch 23",
     sketch: (p, s) => {
       p.setup = () => {
@@ -560,7 +558,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Eye snake", year: 2026, note: "Sketch 24",
     sketch: (p, s) => {
       p.setup = () => {
@@ -610,7 +608,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Money faces", year: 2026, note: "Sketch 26",
     sketch: (p, s) => {
       p.setup = () => {
@@ -634,7 +632,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Colored outlines", year: 2026, note: "Sketch 27",
     sketch: (p, s) => {
       p.setup = () => {
@@ -662,7 +660,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "67", year: 2026, note: "Sketch 28",
     sketch: (p, s) => {
       p.setup = () => {
@@ -727,7 +725,7 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Draw with mouse", year: 2026, note: "Sketch 31",
     sketch: (p, s) => {
       p.setup = () => {
@@ -744,12 +742,13 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Draw with mouse 2", year: 2026, note: "Sketch 32",
     sketch: (p, s) => {
       p.setup = () => {
         p.createCanvas(s, s);
-        p.background(200, 200, 200);
+        p.colorMode(p.HSB);
+        p.background(0, 0, 80);
         p.strokeWeight(6 * s / 400);
         p.describe('A blank canvas where the user draws by dragging the mouse');
       };
@@ -760,8 +759,9 @@ const WORKS = [
       };
     }
   },
-   {
+  {
     title: "Spinning triangle", year: 2026, note: "Sketch 33",
+    sketch: (p, s) => {
       p.setup = () => {
         p.createCanvas(s, s);
       };
@@ -775,11 +775,12 @@ const WORKS = [
       };
     }
   },
-    {
+  {
     title: "Mouse square", year: 2026, note: "Sketch 34",
     sketch: (p, s) => {
       p.setup = () => {
         p.createCanvas(s, s);
+        p.colorMode(p.HSB, 360, 100, 100);
         p.noStroke();
       };
       p.draw = () => {
@@ -792,7 +793,7 @@ const WORKS = [
       };
     }
   },
-        {
+  {
     title: "Green triangles", year: 2026, note: "Sketch 35",
     sketch: (p, s) => {
       p.setup = () => {
@@ -815,7 +816,7 @@ const WORKS = [
       };
     }
   },
-            {
+  {
     title: "Bouncing outlines", year: 2026, note: "Sketch 36",
     sketch: (p, s) => {
       let x = 10, y = 10;
@@ -834,13 +835,13 @@ const WORKS = [
         p.rect(y + 100, x + 100, 100, x + 100, 200, 100);
         p.rect(y - 100, x - 100, 100, x, 30, 100);
         if (x > 400 || x < 0) speedX = speedX * -1;
-        if (y > 400 || y < 0) speedY = speedY *
-           x = x + speedX;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
         y = y + speedY;
       };
     }
   },
-               {
+  {
     title: "Rotating bars", year: 2026, note: "Sketch 37",
     sketch: (p, s) => {
       p.setup = () => {
@@ -859,7 +860,7 @@ const WORKS = [
       };
     }
   },
-                   {
+  {
     title: "Rotating dots", year: 2026, note: "Sketch 38",
     sketch: (p, s) => {
       p.setup = () => {
@@ -879,7 +880,7 @@ const WORKS = [
       };
     }
   },
-                       {
+  {
     title: "Rotating triangles", year: 2026, note: "Sketch 39",
     sketch: (p, s) => {
       p.setup = () => {
@@ -899,7 +900,7 @@ const WORKS = [
       };
     }
   },
-                           {
+  {
     title: "Follow me", year: 2026, note: "Sketch 40",
     sketch: (p, s) => {
       let x = 10, y = 10;
@@ -921,6 +922,7 @@ const WORKS = [
     }
   },
 ];
+
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
 const big = document.getElementById("big");
