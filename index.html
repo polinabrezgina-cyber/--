@@ -921,7 +921,316 @@ const WORKS = [
       };
     }
   },
-];
+    {
+    title: "Spinning hey", year: 2026, note: "Sketch 41",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(100, 200, 200, 9);
+        p.translate(200, 200);
+        p.rotate(p.frameCount * 60);
+        p.translate(100, 100);
+        p.rotate(p.frameCount * 6);
+        p.noStroke();
+        p.fill(p.random(255), p.random(255), p.random(255));
+        p.textSize(19);
+        for (let x = -40; x <= -10; x += 10) p.text('Hey', x, 0, 10, 200);
+        p.text('Hey', 0, 0, 10, 200);
+        for (let x = 10; x <= 150; x += 10) p.text('Hey', x, 10, 10, 200);
+        p.translate(100, 100);
+        p.rotate(p.frameCount * 80);
+      };
+    }
+  },    {
+    title: "Bouncing triangle outlines", year: 2026, note: "Sketch 42",
+    sketch: (p, s) => {
+      let x = 10, y = 10;
+      let speedX = 1, speedY = 5;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(100, 100, 100, 10);
+        p.scale(s / 400);
+        p.noFill();
+        p.triangle(y, x, 100, x, 200, 100);
+        p.triangle(y, x, 100, x, 200, 100);
+        p.triangle(y, x, 100, x, 200, 400);
+        p.triangle(y - 100, x - 100, 100, x, 700, 100);
+        p.triangle(y + 100, x + 100, 100, x + 100, 200, 100);
+        p.triangle(y - 100, x - 100, 100, x, 30, 100);
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
+        y = y + speedY;
+      };
+    }
+  },
+    {
+    title: "Wiggle ribbon", year: 2026, note: "Sketch 43",
+    sketch: (p, s) => {
+      let startColor, endColor;
+      const numPoints = 200;
+      p.setup = () => {
+        p.createCanvas(s, s, p.WEBGL);
+        startColor = p.color(p.random(255), p.random(255), p.random(255));
+        endColor = p.color(p.random(255), p.random(255), p.random(255));
+      };
+      p.draw = () => {
+        p.background(255);
+        p.scale(s / 700);
+        p.noStroke();
+        p.rotateX(p.PI * 0.1);
+        const t = p.millis() * 0.03;
+        p.beginShape(p.QUAD_STRIP);
+        for (let i = 0; i < numPoints; i++) {
+          const x = p.map(i, 80, numPoints - 1, -700 / 3, 700 / 3);
+          let y = p.map(i, 50, numPoints - 1, -400 / 3, 400 / 3);
+          y += 100 * p.sin(t + y * -0.1);
+          y += 100 * p.sin(t + y * 0.1);
+          p.fill(p.lerpColor(startColor, endColor, i / (numPoints - 1)));
+          p.vertex(x, y, -20);
+          p.vertex(x, y, 100);
+        }
+        p.endShape();
+      };
+    }
+  },
+    {
+    title: "Colorful triangle spiral", year: 2026, note: "Sketch 44",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(114, 66, 245, 10);
+        p.translate(200, 200);
+        p.noStroke();
+        p.fill(p.random(255), p.random(255), p.random(255));
+        for (let i = 0; i < 16; i++) {
+          p.rotate(p.frameCount * 0.01 + i * 0.1);
+          p.translate(8, 8);
+          p.triangle(0, 0, 10, 100, 20, 100);
+        }
+      };
+    }
+  },
+    {
+    title: "Teal wavy grid", year: 2026, note: "Sketch 45",
+    sketch: (p, s) => {
+      const start = 20, distbetween = 20;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(0, 92, 92);
+        p.noFill();
+        p.stroke(0, 255, 255);
+        for (let i = 0; i < 19; i++) {
+          for (let j = 0; j < 19; j++) {
+            const wave = p.sin(p.frameCount * 0.05 + i * 0.4 + j * 0.4);
+            p.rect(start + i * distbetween, start + j * distbetween, 20 + wave * 10);
+            p.circle(start + i * distbetween - 10, start + j * distbetween - 10, 15 + wave * 8);
+          }
+        }
+      };
+    }
+  },
+    {
+    title: "Blue triangle grid", year: 2026, note: "Sketch 46",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(0, 145, 255, 20);
+        p.noStroke();
+        const blue = p.map(p.mouseX * 400 / s, 0, 400, 0, 255);
+        for (let x = 25; x < 400; x += 50) {
+          for (let y = 25; y < 400; y += 50) {
+            p.fill(5, blue, 255, 80);
+            p.push();
+            p.translate(x, y);
+            p.rotate(p.frameCount * 0.05 + (x + y) * 0.01);
+            p.triangle(-20, -20, 20, -20, 0, 20);
+            p.circle(0, 0, 6);
+            p.pop();
+          }
+        }
+      };
+    }
+  },
+    {
+    title: "Mouse glow grid", year: 2026, note: "Sketch 47",
+    sketch: (p, s) => {
+      let x = 0;
+      let speedX = 4;
+      const start = 0, distBetween = 10;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.noStroke();
+      };
+      p.draw = () => {
+        p.scale(s / 250);
+        p.background(x, 20, 80);
+        const mx = p.mouseX * 250 / s;
+        const my = p.mouseY * 250 / s;
+        for (let i = 0; i < 25; i++) {
+          for (let j = 0; j < 25; j++) {
+            const px = start + i * distBetween;
+            const py = start + j * distBetween;
+            const d = p.dist(mx, my, px, py);
+            const sz = p.map(d, 0, 250, 14, 2);
+            p.fill(px, 0, py);
+            p.rect(px, py, sz, sz);
+            p.fill(px, p.random(40, 100), py);
+            p.circle(px, py, sz);
+          }
+        }
+        if (x > 250 || x < 0) {
+          speedX = speedX * -1;
+        }
+        x = x + speedX;
+      };
+    }
+  },
+    {
+    title: "MOO", year: 2026, note: "Sketch 48",
+    sketch: (p, s) => {
+      let x = 0, y = 10;
+      let speedX = 4, speedY = 2;
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.textFont('Arial');
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(x, 174, 217);
+        p.textSize(38);
+        for (let i = 0; i < 5; i++) {
+          p.fill(255 - x / 2, y, 255);
+          p.text("MOO", 10 + i * 90, x - 10 - i * 40, y + 60);
+          p.text("MOO", 370 - i * 90, 400 - x + i * 40, y + 60);
+        }
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
+        y = y + speedY;
+      };
+    }
+  },
+    {
+    title: "Strange watch 2", year: 2026, note: "Sketch 49",
+    sketch: (p, s) => {
+      p.setup = () => {
+        p.createCanvas(s, s);
+        p.textAlign(p.CENTER, p.CENTER);
+      };
+      p.draw = () => {
+        p.scale(s / 400);
+        p.background(255, 20);
+        p.translate(200, 200);
+        p.rotate(p.frameCount * 0.05);
+
+        p.noFill();
+        p.stroke(0);
+        p.strokeWeight(1);
+        p.circle(0, 0, 300);
+
+        p.fill(0);
+        p.noStroke();
+        p.textSize(20);
+        for (let n = 1; n <= 12; n++) {
+          const a = n * p.TWO_PI / 12 - p.HALF_PI;
+          p.text(n, p.cos(a) * 125, p.sin(a) * 125);
+        }
+
+        p.stroke(0);
+        p.strokeWeight(4);
+        p.push();
+        p.rotate(p.frameCount * 0.05);
+        p.line(0, 0, 0, -60);
+        p.pop();
+
+        p.strokeWeight(2);
+        p.push();
+        p.rotate(p.frameCount * 0.3);
+        p.line(0, 0, 0, -110);
+        p.pop();
+      };
+    }
+  },
+    {
+    title: "DVD 2", year: 2026, note: "Sketch 50",
+    sketch: (p, s) => {
+      let drops = [];
+      const addDrop = (px, py) => {
+        drops.push({
+          x: px,
+          y: py,
+          vx: p.random(-2, 2),
+          vy: 0,
+          squash: 0,
+          c: p.color(p.random(150, 255), p.random(100, 255), p.random(150, 255))
+        });
+      };
+      p.setup = () => {
+        const cnv = p.createCanvas(s, s);
+        p.textFont('Times New Roman');
+        p.textAlign(p.CENTER, p.CENTER);
+        for (let i = 0; i < 5; i++) {
+          addDrop(p.random(60, 340), p.random(0, 150));
+        }
+        cnv.mousePressed(() => addDrop(p.mouseX * 400 / s, p.mouseY * 400 / s));
+      };
+      p.draw = () => {
+        p.background(20, 10, 40, 40);
+        p.scale(s / 400);
+        for (let d of drops) {
+          d.vy += 0.4;
+          d.x += d.vx;
+          d.y += d.vy;
+          d.squash *= 0.85;
+
+          if (d.y > 400 - 20) {
+            d.y = 400 - 20;
+            d.vy *= -0.85;
+            d.squash = 1;
+          }
+
+          if (d.x > 400 - 50 || d.x < 50) {
+            d.vx *= -1;
+            d.x = p.constrain(d.x, 50, 400 - 50);
+          }
+
+          const w = 100 + d.squash * 30;
+          const h = 40 - d.squash * 15;
+
+          p.noStroke();
+          p.fill(d.c);
+          p.ellipse(d.x, d.y, w, h);
+          p.fill(0);
+          p.textSize(28);
+          p.text('DVD', d.x, d.y);
+        }
+
+        if (drops.length > 30) {
+          drops.shift();
+        }
+
+        p.fill(255);
+        p.textSize(14);
+        p.text('click to drop more', 200, 15);
+      };
+    }
+  },
+  ];
 
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
