@@ -52,6 +52,7 @@
    Скетч пишется в instance-режиме: используйте p.setup, p.draw,
    p.circle(...) вместо глобальных setup, draw, circle(...).
    Размер холста берите из переменной s (сторона квадрата).
+   Новые скетчи вставляйте ПЕРЕД строкой  ];
    ============================================================ */
 const WORKS = [
   {
@@ -921,7 +922,7 @@ const WORKS = [
       };
     }
   },
-    {
+  {
     title: "Spinning hey", year: 2026, note: "Sketch 41",
     sketch: (p, s) => {
       p.setup = () => {
@@ -944,33 +945,9 @@ const WORKS = [
         p.rotate(p.frameCount * 80);
       };
     }
-  },    {
-    title: "Bouncing triangle outlines", year: 2026, note: "Sketch 42",
-    sketch: (p, s) => {
-      let x = 10, y = 10;
-      let speedX = 1, speedY = 5;
-      p.setup = () => {
-        p.createCanvas(s, s);
-      };
-      p.draw = () => {
-        p.background(100, 100, 100, 10);
-        p.scale(s / 400);
-        p.noFill();
-        p.triangle(y, x, 100, x, 200, 100);
-        p.triangle(y, x, 100, x, 200, 100);
-        p.triangle(y, x, 100, x, 200, 400);
-        p.triangle(y - 100, x - 100, 100, x, 700, 100);
-        p.triangle(y + 100, x + 100, 100, x + 100, 200, 100);
-        p.triangle(y - 100, x - 100, 100, x, 30, 100);
-        if (x > 400 || x < 0) speedX = speedX * -1;
-        if (y > 400 || y < 0) speedY = speedY * -1;
-        x = x + speedX;
-        y = y + speedY;
-      };
-    }
   },
-    {
-    title: "Wiggle ribbon", year: 2026, note: "Sketch 43",
+  {
+    title: "Wiggle ribbon", year: 2026, note: "Sketch 42",
     sketch: (p, s) => {
       let startColor, endColor;
       const numPoints = 200;
@@ -999,7 +976,32 @@ const WORKS = [
       };
     }
   },
-    {
+  {
+    title: "Bouncing triangle outlines", year: 2026, note: "Sketch 43",
+    sketch: (p, s) => {
+      let x = 10, y = 10;
+      let speedX = 1, speedY = 5;
+      p.setup = () => {
+        p.createCanvas(s, s);
+      };
+      p.draw = () => {
+        p.background(100, 100, 100, 10);
+        p.scale(s / 400);
+        p.noFill();
+        p.triangle(y, x, 100, x, 200, 100);
+        p.triangle(y, x, 100, x, 200, 100);
+        p.triangle(y, x, 100, x, 200, 400);
+        p.triangle(y - 100, x - 100, 100, x, 700, 100);
+        p.triangle(y + 100, x + 100, 100, x + 100, 200, 100);
+        p.triangle(y - 100, x - 100, 100, x, 30, 100);
+        if (x > 400 || x < 0) speedX = speedX * -1;
+        if (y > 400 || y < 0) speedY = speedY * -1;
+        x = x + speedX;
+        y = y + speedY;
+      };
+    }
+  },
+  {
     title: "Colorful triangle spiral", year: 2026, note: "Sketch 44",
     sketch: (p, s) => {
       p.setup = () => {
@@ -1019,7 +1021,7 @@ const WORKS = [
       };
     }
   },
-    {
+  {
     title: "Teal wavy grid", year: 2026, note: "Sketch 45",
     sketch: (p, s) => {
       const start = 20, distbetween = 20;
@@ -1041,8 +1043,8 @@ const WORKS = [
       };
     }
   },
-    {
-    title: "Blue triangle grid", year: 2026, note: "Sketch 46",
+  {
+    title: "Blue triangle grid", year: 2026, note: "Move the mouse to change the colour.",
     sketch: (p, s) => {
       p.setup = () => {
         p.createCanvas(s, s);
@@ -1066,8 +1068,8 @@ const WORKS = [
       };
     }
   },
-    {
-    title: "Mouse glow grid", year: 2026, note: "Sketch 47",
+  {
+    title: "Mouse glow grid", year: 2026, note: "Move the mouse over the canvas.",
     sketch: (p, s) => {
       let x = 0;
       let speedX = 4;
@@ -1100,7 +1102,7 @@ const WORKS = [
       };
     }
   },
-    {
+  {
     title: "MOO", year: 2026, note: "Sketch 48",
     sketch: (p, s) => {
       let x = 0, y = 10;
@@ -1125,7 +1127,7 @@ const WORKS = [
       };
     }
   },
-    {
+  {
     title: "Strange watch 2", year: 2026, note: "Sketch 49",
     sketch: (p, s) => {
       p.setup = () => {
@@ -1166,8 +1168,8 @@ const WORKS = [
       };
     }
   },
-    {
-    title: "DVD 2", year: 2026, note: "Sketch 50",
+  {
+    title: "DVD 2", year: 2026, note: "Click the canvas to drop more.",
     sketch: (p, s) => {
       let drops = [];
       const addDrop = (px, py) => {
@@ -1230,7 +1232,7 @@ const WORKS = [
       };
     }
   },
-  ];
+];
 
 const grid = document.getElementById("grid");
 const dlg = document.getElementById("dlg");
